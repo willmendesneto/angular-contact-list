@@ -1,0 +1,145 @@
+@import 'sass-bootstrap/lib/bootstrap';
+@import 'my-variables';
+@import 'my-mixins';
+@import 'compass/css3/box-shadow';
+@import 'compass/css3/transition';
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Quicksand', 'Helvetica Neue',Helvetica,Arial, sans-serif;
+  font-size: 16px;
+  background: #E7E7E7;
+}
+
+html,
+body,
+legend {
+  color: $color-font-default;
+}
+
+iframe, object, embed {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', 'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  background: $color-white;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+  }
+}
+
+.animate-show {
+  line-height:20px;
+  opacity:1;
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height:0;
+  opacity:0;
+  padding:0 10px;
+}
+
+.btn,
+.form-control {
+  border-radius: 0;
+}
+.btn {
+  font-size:10px;
+}
+.btn-add-contact{
+  width: 100%;
+  font-size: 24px !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  outline: 0;
+  cursor: pointer;
+  letter-spacing: 1px;
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+.form-group[class*="col-lg-"] {
+  padding-left: 0;
+}
+
+.no-padding-left,
+.form-group.no-padding-left[class*="col-lg-"] {
+  padding-left: 0;
+}
+.no-padding-right,
+.form-group.no-padding-right[class*="col-lg-"] {
+  padding-right: 0;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > td {
+  color: #336077;
+}
+
+.btn-success {
+  background: $color-green;
+}
+.btn-primary {
+  background: $color-blue;
+  color: $color-white;
+}
+
+
+@include contact_table_order();
+@include contact_actions();
+@include btn_outline();
+@include contact_mobile_list();
+
+.main-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: $color-white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border:1px solid #ccc;
+  @include box-shadow(0 15px 6px -6px $color-font-default);
+}
+.bg-blue {
+  background: $color-blue;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}

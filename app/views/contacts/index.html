@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1 main-content">
+    <h1 class="text-center">Contact List</h1>
+    <a class="btn btn-primary btn-outline btn-add-contact col-lg-12 col-md-12 col-sm-12  clearfix" href="#/contacts/new" >ADD NEW CONTACT</a>
+
+    <form autocomplete="off" role="form">
+      <div class="form-group">
+        <fieldset>
+          <input type="search" name="search" id="search" placeholder="Search..." data-ng-model="search" class="form-control" />
+        </fieldset>
+      </div>
+    </form>
+
+    <div class="alert alert-warning fade in" data-ng-repeat="alert in alerts track by $index">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-ng-click="closeAlertMessage($index)">×</button>
+      {{ alert.msg }}
+    </div>
+
+    <ul class="contact-list" data-ng-if="filteredData.length > 0">
+      <li data-ng-repeat="item in filteredData = (listContacts | orderBy:predicate:reverse | filter:search) | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
+        <div class="first-letter" >
+          <span>{{item.name[0] | capitalize}}</span>
+        </div>
+        <img alt="{{item.name}}" src="http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png" />
+        <div class="info">
+          <h2 class="title">{{item.name}}</h2>
+          <ul>
+            <li><a href="#/contacts/{{item._id}}/edit">✔ EDIT</a></li>
+            <li><a data-ng-click="delete(item._id);">✖ DELETE</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+
+    <p class="text-center bold">{{ filteredData.length }} contact{{ filteredData.length > 1 ? 's' : '' }}</p>
+
+  </div>
+</div>

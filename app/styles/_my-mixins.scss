@@ -1,0 +1,284 @@
+@mixin contact_actions () {
+
+  form.contact-actions {
+    margin-bottom: 2em;
+    margin-top: 1em;
+    legend {
+      color: $color-blue;
+      font-weight: 700;
+    }
+    a,
+    input[type="color"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="url"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="week"],
+    input[type="month"] {
+      width: 100%;
+      margin: 0;
+      padding: 5px 10px;
+      background: #F8F8F8;
+      border: 0;
+      border-bottom: 1px solid #CCC;
+      outline: 0;
+      font-style: italic;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      color: #5E5E5E;
+      outline: 0;
+    }
+    a{
+      background: $color-red;
+      color: $color-white;
+    }
+    input[type="date"] {
+      ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        display: none;
+      }
+      ::-moz-inner-spin-button {
+        -moz-appearance: none;
+        display: none;
+      }
+      ::-o-inner-spin-button {
+        -o-appearance: none;
+        display: none;
+      }
+      ::-ms-inner-spin-button {
+        -ms-appearance: none;
+        display: none;
+      }
+      ::inner-spin-button {
+        appearance: none;
+        display: none;
+      }
+    }
+
+    input[type="submit"], a {
+      width: 100%;
+      font-size: 24px !important;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: 16px;
+      outline: 0;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+
+    input[type="submit"]:hover, a:hover {
+      transition: background-color 0.5s ease;
+    }
+
+    label,
+    a {
+      font-size: 12px;
+      font-weight: 400;
+      color: #FFFFFF;
+    }
+  }
+}
+
+@mixin contact_table_order() {
+
+  .contact-table-order {
+    cursor: pointer;
+    &::before {
+      content:  "\f106";
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      float: right;
+      float: right;
+      position: relative;
+      margin-top: -5px;
+      margin-right: 5px;
+    }
+    &::after {
+      content: "\f107";
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      float: right;
+      margin-top: 3px;
+      margin-right: -10px;
+      margin-bottom: -3px;
+    }
+    &.asc::after,
+    &.desc::after {
+      margin-top: 0;
+      margin-right: 5px;
+    }
+    &.asc::after {
+      content:  "\f106";
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+    }
+    &.asc::before {
+      content:  " ";
+    }
+    &.desc::after {
+      content: "\f107";
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+    }
+    &.desc::before {
+      content:  " ";
+    }
+  }
+}
+
+@mixin btn_outline() {
+  .btn-outline, a.btn-outline {
+    color: #FFF;
+    transition: all .5s;
+    @include box-shadow(inset 0 1px 2px #8d8d8d);
+    @include transition;
+
+    &.btn-primary:hover {
+        color: #428bca;
+    }
+
+    &.btn-success:hover {
+        color: #5cb85c;
+    }
+
+    &.btn-info:hover {
+        color: #5bc0de;
+    }
+
+    &.btn-warning:hover {
+        color: #f0ad4e;
+    }
+
+    &.btn-danger:hover {
+        color: #d9534f;
+    }
+
+    &.btn-primary:hover,
+    &.btn-success:hover,
+    &.btn-info:hover,
+    &.btn-warning:hover,
+    &.btn-danger:hover {
+        background-color: transparent;
+        @include single-box-shadow($blur: 10px);
+    }
+  }
+}
+
+@mixin contact_mobile_list(){
+
+  .contact-list {
+    list-style: none;
+    font-family: 'Lato', sans-serif;
+    margin: 0px;
+    padding: 0px;
+  }
+  .contact-list > li {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px rgb(51, 51, 51);
+    box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+    padding: 0px;
+    margin: 0px 0px 20px;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 125px;
+    padding: 0px;
+  }
+  .contact-list > li > .first-letter {
+    display: inline-block;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(197, 44, 102);
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .contact-list > li:nth-child(even) > .first-letter {
+    background-color: rgb(165, 82, 167);
+  }
+  .contact-list > li > .first-letter > span {
+    display: block;
+    font-size: 100px;
+    font-weight: 100;
+    line-height: 1;
+  }
+  .contact-list > li > img {
+    width: 100%;
+  }
+  .contact-list > li > .info {
+    padding-top: 5px;
+    text-align: center;
+    background-color: rgb(245, 245, 245);
+    overflow: hidden;
+    position: relative;
+    height: 125px;
+    text-align: left;
+  }
+  .contact-list > li > .info > .title {
+    font-size: 17pt;
+    font-weight: 300;
+    margin: 0px;
+  }
+  .contact-list > li > .info > .desc {
+    font-size: 13pt;
+    font-weight: 300;
+    margin: 0px;
+  }
+  .contact-list > li > .info > ul{
+  display: table;
+    list-style: none;
+    margin: 10px 0px 0px;
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+  }
+  .contact-list > li > .info > ul > li{
+    display: table-cell;
+    cursor: pointer;
+    color: rgb(30, 30, 30);
+    font-size: 11pt;
+    font-weight: 300;
+    padding: 3px 0px;
+  }
+  .contact-list > li > .info > ul > li > a {
+    display: block;
+    width: 100%;
+    color: rgb(30, 30, 30);
+    text-decoration: none;
+  }
+  .contact-list > li > .info > ul > li:hover{
+    color: rgb(30, 30, 30);
+    background-color: rgb(200, 200, 200);
+  }
+  .contact-list > li > .first-letter,
+  .contact-list > li > img {
+    display: inline-block;
+    float: left;
+    width: 125px;
+    height: 125px;
+    padding: 0px;
+    margin: 0px;
+  }
+  .contact-list > li > .info > .title,
+  .contact-list > li > .info > .desc {
+    padding: 0px 10px;
+  }
+  .contact-list > li > .info > ul {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
+}

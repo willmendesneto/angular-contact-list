@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3 col-xs-10 col-xs-offset-1 main-content">
+    <h1 class="text-center">Contact List</h1>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4 col-sm-3 col-sm-offset-4 col-md-3 col-md-offset-4 col-lg-3 col-lg-offset-4 clearfix">
+          <img src="http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png" alt="Seth Frazier" class="img-responsive img-circle" />
+      </div>
+    </div>
+    <form autocomplete="off" role="form" novalidate class="form-inline contact-actions clearfix" name="crudOperations" data-ng-submit="save(contact)" >
+      <fieldset>
+        <legend>Edit an item</legend>
+        <input type="hidden" data-ng-model="contact._id" />
+        <div class="form-group float-label-control col-lg-6 col-md-6 col-sm-6 no-padding-left" data-ng-class="{'has-error': crudOperations.name.$invalid && crudOperations.name.$dirty, 'has-success': crudOperations.name.$valid && crudOperations.name.$dirty}">
+          <input type="text" name="name" data-ng-model="contact.name" class="form-control" data-ng-class="{empty: contact.name.length === 0 || contact.name.length === undefined}" placeholder="Your name" required qs-focus/>
+          <div data-ng-if="crudOperations.name.$invalid && crudOperations.name.$dirty && !crudOperations.name.$focused">
+            <p class="help-block">
+              This field is required
+            </p>
+          </div>
+        </div>
+        <div class="form-group float-label-control col-lg-6 col-md-6 col-sm-6 no-padding-left" data-ng-class="{'has-error': crudOperations.phone.$invalid && crudOperations.phone.$dirty, 'has-success': crudOperations.phone.$valid && crudOperations.phone.$dirty}">
+          <input type="text" name="phone" kp-mask='+99 (99) 9999-9999' kp-placeholder="+99 (99) 9999-9999" data-ng-model="contact.phone" class="form-control" data-ng-class="{empty: contact.phone.length === 0 || contact.phone.length === undefined}" required qs-focus/>
+          <div data-ng-if="crudOperations.phone.$invalid && crudOperations.phone.$dirty && !crudOperations.phone.$focused">
+            <p class="help-block">
+              This field is required
+            </p>
+          </div>
+        </div>
+        <div class="form-group float-label-control col-lg-12 col-md-12 col-sm-12 no-padding-right clearfix" data-ng-class="{'has-error': crudOperations.data.$invalid && crudOperations.data.$dirty, 'has-success': crudOperations.data.$valid && crudOperations.data.$dirty}">
+          <textarea name="address" ng-model="contact.address" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" rows="10" required qs-focus></textarea>
+          <div data-ng-if="crudOperations.address.$invalid && crudOperations.address.$dirty && !crudOperations.address.$focused">
+            <p class="help-block">
+              This field is required
+            </p>
+          </div>
+        </div>
+        <div class="form-group col-lg-12 col-md-12 col-sm-12 no-padding-right">
+          <div class="col-lg-12" data-ng-if="crudOperations.$invalid && crudOperations.data.$dirty">
+            <p>You shall not pass =/</p>
+            <p>You only can finish the operation if all fields required was populated correctly</p>
+          </div>
+          <input type="submit" class="btn btn-primary btn-outline col-lg-12 col-md-12 col-sm-12  clearfix" value="UPDATE" data-ng-disabled="crudOperations.$invalid && !crudOperations.data.$dirty" />
+          <a data-ng-class="{hide: contact._id === undefined}" class="btn btn-danger btn-outline col-lg-12 col-md-12 col-sm-12 " href="#/contacts" >CANCEL</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
