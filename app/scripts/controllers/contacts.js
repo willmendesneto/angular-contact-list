@@ -1,7 +1,7 @@
 /* globals confirm */
 'use strict';
 
-angular.module('questradeApp')
+angular.module('angularContactsListApp')
   .controller('ContactsCtrl', function ($scope, $location, $routeParams, $route, $filter, CryptoOfflineStorageService, AlertService, ContactsService) {
 
     /**

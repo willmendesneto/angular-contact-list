@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('questradeApp')
+angular.module('angularContactsListApp')
   .directive('qsTable', function () {
     return {
       restrict: 'E',

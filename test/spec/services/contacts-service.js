@@ -3,7 +3,7 @@
 describe('Service: ContactsService', function () {
 
   // load the service's module
-  beforeEach(module('questradeApp'));
+  beforeEach(module('angularContactsListApp'));
 
   // instantiate service
   var ContactsService,

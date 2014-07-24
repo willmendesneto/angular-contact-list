@@ -3,7 +3,7 @@
 describe('Filter: startFrom', function () {
 
   // load the filter's module
-  beforeEach(module('questradeApp'));
+  beforeEach(module('angularContactsListApp'));
 
   // initialize a new instance of the filter before each test
   var startFrom;

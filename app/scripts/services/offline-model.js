@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('questradeApp')
+angular.module('angularContactsListApp')
   .factory('OfflineModel', function OfflineModel($filter, CryptoOfflineStorageService) {
 
     // Service logic
@@ -14,7 +14,7 @@ angular.module('questradeApp')
 
     // Public API here
     return {
-      _secret: 'questrade',
+      _secret: 'angularContactsListApp',
       init: function (key, _items, params) {
 
         var self = this;
@@ -29,7 +29,7 @@ angular.module('questradeApp')
         self.setListItems(_DB);
 
         //  Extend params for create a factory in service
-        return angular.extend(self, params);
+        return angular.extend(self, params || {});
       },
       createValueObject: function(item) {
         var obj = {};
@@ -79,8 +79,9 @@ angular.module('questradeApp')
         CryptoOfflineStorageService.set(_key, _items);
         return _items;
       },
-      delete: function (index) {
-        var _id = _items.filter( function (element, pos) {
+      delete: function(index) {
+        var db = this.getDB();
+        var _id = db.filter( function (element, pos) {
           if ( element._id === index){
             element.pos = pos;
             return element;
@@ -88,11 +89,10 @@ angular.module('questradeApp')
         });
 
         if (_id.length > 0) {
-          var item = _items.splice(_id[0].pos, 1);
-          console.log(typeof item[0]);
+          var item = db.splice(_id[0].pos, 1);
           if (typeof item[0] ===  'object') {
-            this.setListItems(_items);
-            CryptoOfflineStorageService.set(_key, _items);
+            this.setListItems(db);
+            CryptoOfflineStorageService.set('listContacts', db);
             return item[0];
           }
         }

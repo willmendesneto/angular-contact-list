@@ -11,7 +11,7 @@
  * ###Additional information
  * You can write something else if you want.
  */
-angular.module('questradeApp')
+angular.module('angularContactsListApp')
   .directive('navbar', function () {
     return {
       restrict: 'E',

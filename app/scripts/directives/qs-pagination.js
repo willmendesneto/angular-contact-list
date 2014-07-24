@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('questradeApp')
+angular.module('angularContactsListApp')
   .directive('qsPagination', function () {
     return {
       restrict: 'E',

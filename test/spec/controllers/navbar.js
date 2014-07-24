@@ -3,7 +3,7 @@
 describe('Controller: NavbarCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('questradeApp'));
+  beforeEach(module('angularContactsListApp'));
 
   var NavbarCtrl,
     scope,

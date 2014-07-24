@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('questradeApp')
+angular.module('angularContactsListApp')
   .filter('startFrom', function () {
     return function(input, start) {
       start = +start; //parse to int

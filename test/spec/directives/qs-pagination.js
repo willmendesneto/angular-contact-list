@@ -3,7 +3,7 @@
 describe('Directive: qsPagination', function () {
 
   // load the directive's module
-  beforeEach(module('questradeApp'));
+  beforeEach(module('angularContactsListApp'));
 
   var element,
     template,

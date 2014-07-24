@@ -5,7 +5,7 @@
  *
  * @type {Array}
  */
-angular.module('questradeApp')
+angular.module('angularContactsListApp')
   .value('listContacts', [
     {_id: 1, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 101', phone: '557188339933'},
     {_id: 2, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 102', phone: '557188339933'},

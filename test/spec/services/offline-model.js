@@ -3,7 +3,7 @@
 describe('Service: OfflineModel', function () {
 
   // load the service's module
-  beforeEach(module('questradeApp'));
+  beforeEach(module('angularContactsListApp'));
 
   // instantiate service
   var OfflineModel, myMock, MyOfflineModel;
