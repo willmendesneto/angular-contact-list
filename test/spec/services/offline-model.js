@@ -27,7 +27,7 @@ describe('Service: OfflineModel', function () {
   it('#init', function () {
     expect(MyOfflineModel.getListItems().length).toBe(6);
     expect(MyOfflineModel.getKey()).toBe('myMock');
-    expect(MyOfflineModel.getDB()).toEqual(myMock);
+    expect(MyOfflineModel.getListItems()).toEqual(myMock);
   });
 
   it('#countTotalItems', function(){

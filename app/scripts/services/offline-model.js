@@ -7,29 +7,30 @@ angular.module('angularContactsListApp')
     // ...
 
     var _key = null,
-        _DB = null,
         _items = null,
         _fields = null
     ;
 
     // Public API here
     return {
-      _secret: 'angularContactsListApp',
+      _secret: 'my-awesome-key',
       init: function (key, _items, params) {
 
         var self = this;
         _key = key;
+        params = params || {};
+        var i = _items;
 
         CryptoOfflineStorageService.init({secret: self._secret});
-        _DB = CryptoOfflineStorageService.get(_key);
-        if (!_DB){
+        _items = CryptoOfflineStorageService.get(_key);
+        if (!_items){
           CryptoOfflineStorageService.set(_key, _items);
-          _DB = _items;
+          _items = i;
         }
-        self.setListItems(_DB);
+        self.setListItems(_items, params);
 
         //  Extend params for create a factory in service
-        return angular.extend(self, params || {});
+        return angular.extend(self, params);
       },
       createValueObject: function(item) {
         var obj = {};
@@ -56,9 +57,6 @@ angular.module('angularContactsListApp')
         _fields = fields;
         return this;
       },
-      getDB: function(){
-        return _DB;
-      },
       countTotalItems: function(items) {
         return ($filter('max')(items, '_id') || 0) + 1;
       },
@@ -80,7 +78,7 @@ angular.module('angularContactsListApp')
         return _items;
       },
       delete: function(index) {
-        var db = this.getDB();
+        var db = this.getListItems();
         var _id = db.filter( function (element, pos) {
           if ( element._id === index){
             element.pos = pos;
@@ -92,7 +90,7 @@ angular.module('angularContactsListApp')
           var item = db.splice(_id[0].pos, 1);
           if (typeof item[0] ===  'object') {
             this.setListItems(db);
-            CryptoOfflineStorageService.set('listContacts', db);
+            CryptoOfflineStorageService.set(_key, db);
             return item[0];
           }
         }

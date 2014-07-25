@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('angularContactsListApp')
-  .controller('ContactsCtrl', function ($scope, $location, $routeParams, $route, $filter, CryptoOfflineStorageService, AlertService, ContactsService) {
+  .controller('ContactsCtrl', function ($scope, $location, $routeParams, $route, $filter, AlertService, ContactsService) {
 
     /**
      * Initial value of form
@@ -61,6 +61,7 @@ angular.module('angularContactsListApp')
      */
     $scope.create = function(contact){
       $scope.listContacts = ContactsService.create(contact);
+      AlertService.add('success', 'Contact "' + contact.name + '" created with success!', 5000);
     };
 
     /**
@@ -80,6 +81,7 @@ angular.module('angularContactsListApp')
      */
     $scope.update = function( item ) {
       $scope.listContacts = ContactsService.update(item);
+      AlertService.add('success', 'Contact "' + item.name + '" updated with success!', 5000);
     };
 
     /**
@@ -109,9 +111,9 @@ angular.module('angularContactsListApp')
         var message,
             item = ContactsService.delete(index);
         if (!!item) {
-          message = 'Contact "' + item.name + '" with id "' + item._id+ '" was removed of your contact\'s list';
+          message = 'Contact "' + item.name + '" was removed of your contact\'s list';
           AlertService.add('success', message, 5000);
-          $scope.listContacts = ContactsService.getDB();
+          $scope.listContacts = ContactsService.getListItems();
           return true;
         }
         AlertService.add('error', 'Houston, we have a problem. This operation cannot be executed correctly.', 5000);
@@ -133,7 +135,7 @@ angular.module('angularContactsListApp')
      * @return {[type]} [description]
      */
     $scope.init = function(){
-      $scope.listContacts = $scope.filteredData = ContactsService.getDB();
+      $scope.listContacts = $scope.filteredData = ContactsService.getListItems();
       $scope.reset();
       //  Calling routeParam method
       if ($route.current.method !== undefined) {

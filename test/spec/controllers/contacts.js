@@ -90,6 +90,7 @@ describe('Controller: ContactsCtrl', function () {
 
     scope.create(opts.contact[listContactsKey]);
     expect(scope.listContacts.length).toBe(listcontacthLength + 1);
+    scope.delete(7, false);
   });
 
   it('#edit', function () {
