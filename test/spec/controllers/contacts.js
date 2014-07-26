@@ -63,26 +63,6 @@ describe('Controller: ContactsCtrl', function () {
     expect(scope.contact[listContactsKey].address).toBe('');
     expect(scope.contact[listContactsKey].phone).toBe('');
   });
-
-  it('#numberOfPages', function(){
-    expect(scope.numberOfPages()).toEqual(1);
-    scope.listContacts = [
-        {_id: 1, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 102', phone: '557188339931'},
-        {_id: 2, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 103', phone: '557188339932'},
-        {_id: 3, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 104', phone: '557188339933'},
-        {_id: 4, name: 'Gregory Levinsky', address: 'St. Claire Avenue, Nº 105', phone: '557188339934'},
-        {_id: 5, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339935'},
-        {_id: 6, name: 'Jackeline Macfly', address: 'St. Claire Avenue, Nº 107', phone: '557188339936'},
-        {_id: 7, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 108', phone: '557188339931'},
-        {_id: 8, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 109', phone: '557188339932'},
-        {_id: 9, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 110', phone: '557188339933'},
-        {_id: 10, name: 'Gregory Levinsky', address: 'St. Claire Avenue, Nº 111', phone: '557188339934'},
-        {_id: 11, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 112', phone: '557188339935'},
-        {_id: 12, name: 'Jackeline Macfly', address: 'St. Claire Avenue, Nº 113', phone: '557188339936'}
-      ];
-    expect(scope.numberOfPages()).toEqual(2);
-  });
-
   it('#create', function () {
     scope.contact = opts.contact;
     var listcontacthLength = scope.listContacts.length;

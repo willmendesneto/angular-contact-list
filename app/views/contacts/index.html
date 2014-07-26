@@ -17,7 +17,7 @@
     </div>
 
     <ul class="contact-list" data-ng-if="filteredData.length > 0">
-      <li data-ng-repeat="item in filteredData = (listContacts | orderBy:predicate:reverse | filter:search) | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
+      <li data-ng-repeat="item in filteredData = (listContacts | filter:search) track by $index">
         <div class="first-letter" >
           <span>{{item.name[0] | capitalize}}</span>
         </div>
@@ -31,8 +31,6 @@
         </div>
       </li>
     </ul>
-
-    <p class="text-center bold">{{ filteredData.length }} contact{{ filteredData.length > 1 ? 's' : '' }}</p>
 
   </div>
 </div>

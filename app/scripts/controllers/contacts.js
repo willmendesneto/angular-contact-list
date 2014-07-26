@@ -12,30 +12,6 @@ angular.module('angularContactsListApp')
     $scope.contact = [];
 
     /**
-     * Order by verification for template
-     * @type {Boolean}
-     */
-    $scope.reverse = false;
-
-    /**
-     * field used for table ordenation
-     * @type {String}
-     */
-    $scope.predicate = 'name';
-
-    /**
-     * Limit to initial value
-     * @type {Number}
-     */
-    $scope.currentPage = 0;
-
-    /**
-     * Page quantity for data visualization
-     * @type {Number}
-     */
-    $scope.pageSize = 10;
-
-    /**
      * Reset the form values
      */
     $scope.reset = function() {
@@ -46,14 +22,6 @@ angular.module('angularContactsListApp')
           phone: ''
         }
       ];
-    };
-
-    /**
-     * Returns the number page based in params
-     * @return {[type]} [description]
-     */
-    $scope.numberOfPages = function(){
-      return Math.ceil($scope.listContacts.length/$scope.pageSize);
     };
 
     /**
