@@ -5,7 +5,7 @@ exports.config = {
   chromeDriver: './node_modules/protractor/selenium/chromedriver',
 
   seleniumAddress: 'http://0.0.0.0:4444/wd/hub',
-  baseUrl: 'http://127.0.0.1:9000',
+  baseUrl: 'http://0.0.0.0:9000',
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
