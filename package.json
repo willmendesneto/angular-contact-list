@@ -40,7 +40,6 @@
     "node": ">=0.8.0"
   },
   "scripts": {
-    "preinstall": "npm install -g karma grunt-cli bower yo jshint",
     "prestart": "npm install",
     "postinstall": "bower install && ./node_modules/protractor/bin/webdriver-manager update",
     "start": "grunt serve",
