@@ -15,7 +15,8 @@ angular.module('angularContactsListApp')
   .directive('navbar', function () {
     return {
       restrict: 'E',
-      templateUrl: 'views/directives/navbar.html',
+      templateUrl: 'scripts/commons/views/directives/navbar.html',
       controller: 'NavbarCtrl',
+      controllerAs: 'navbarCtrl',
     };
   });

@@ -6,12 +6,12 @@
           <img src="http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png" alt="Seth Frazier" class="img-responsive img-circle" />
       </div>
     </div>
-    <form autocomplete="off" role="form" novalidate class="form-inline contact-actions clearfix" name="crudOperations" data-ng-submit="save(contact)" >
+    <form autocomplete="off" role="form" novalidate class="form-inline contact-actions clearfix" name="crudOperations" data-ng-submit="contactsCtrl.save(contactsCtrl.contact)" >
       <fieldset>
-        <legend>{{ contact._id !== undefined || contact === '0' ? 'Edit' : 'Insert'; }} an item</legend>
-        <input type="hidden" data-ng-model="contact._id" />
+        <legend>Insert an item</legend>
+        <input type="hidden" data-ng-model="contactsCtrl.contact._id" />
         <div class="form-group float-label-control col-lg-6 col-md-6 col-sm-6 no-padding-left" data-ng-class="{'has-error': crudOperations.name.$invalid && crudOperations.name.$dirty, 'has-success': crudOperations.name.$valid && crudOperations.name.$dirty}">
-          <input type="text" name="name" data-ng-model="contact.name" class="form-control" data-ng-class="{empty: contact.name.length === 0 || contact.name.length === undefined}" placeholder="Your name" required qs-focus/>
+          <input type="text" name="name" data-ng-model="contactsCtrl.contact.name" class="form-control" data-ng-class="{empty: contactsCtrl.contact.name.length === 0 || contactsCtrl.contact.name.length === undefined}" placeholder="Your name" required qs-focus/>
           <div data-ng-if="crudOperations.name.$invalid && crudOperations.name.$dirty && !crudOperations.name.$focused">
             <p class="help-block">
               This field is required
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="form-group float-label-control col-lg-12 col-md-12 col-sm-12 no-padding-right clearfix" data-ng-class="{'has-error': crudOperations.data.$invalid && crudOperations.data.$dirty, 'has-success': crudOperations.data.$valid && crudOperations.data.$dirty}">
-          <textarea name="address" ng-model="contact.address" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" rows="10" required qs-focus></textarea>
+          <textarea name="address" ng-model="contactsCtrl.contact.address" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" rows="10" required qs-focus></textarea>
           <div data-ng-if="crudOperations.address.$invalid && crudOperations.address.$dirty && !crudOperations.address.$focused">
             <p class="help-block">
               This field is required
@@ -39,32 +39,10 @@
             <p>You shall not pass =/</p>
             <p>You only can finish the operation if all fields required was populated correctly</p>
           </div>
-          <input type="submit" class="btn btn-primary btn-outline col-lg-12 col-md-12 col-sm-12  clearfix" value="{{ contact._id !== undefined || contact === '0' ? 'UPDATE' : 'CREATE'; }}" data-ng-disabled="crudOperations.$invalid && !crudOperations.data.$dirty" />
-          <a data-ng-class="{hide: contact._id === undefined}" class="btn btn-danger btn-outline col-lg-12 col-md-12 col-sm-12 " data-ng-click="reset()" >CANCEL</a>
+          <input type="submit" class="btn btn-primary btn-outline col-lg-12 col-md-12 col-sm-12  clearfix" value="CREATE" data-ng-disabled="crudOperations.$invalid && !crudOperations.data.$dirty" />
+          <a class="btn btn-danger btn-outline col-lg-12 col-md-12 col-sm-12 " href="#/contacts" >CANCEL</a>
         </div>
       </fieldset>
     </form>
-
-    <form autocomplete="off" role="form">
-      <div class="form-group">
-        <fieldset>
-          <input type="search" name="search" id="search" placeholder="Search..." data-ng-model="search" class="form-control" />
-        </fieldset>
-      </div>
-    </form>
-
-    <div class="alert alert-warning fade in" data-ng-repeat="alert in alerts track by $index">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-ng-click="closeAlertMessage($index)">×</button>
-      {{ alert.msg }}
-    </div>
-    <div class="table-responsive" data-ng-if="filteredData.length > 0">
-
-      <qs-table></qs-table>
-
-      <p class="text-center bold">{{ filteredData.length }} contact{{ filteredData.length > 1 ? 's' : '' }}</p>
-
-      <qs-pagination></qs-pagination>
-
-    </div>
   </div>
 </div>

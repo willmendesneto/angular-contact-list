@@ -1,66 +1,64 @@
 /* globals confirm */
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('angularContactsListApp')
-  .controller('MainCtrl', function ($scope, $filter, AlertService, ContactsService) {
+  function MainCtrl($scope, $filter, AlertService, ContactsService) {
 
     /**
      * Initial value of form
      *
      * @type {Array}
      */
-    $scope.contact = [];
+    this.contact = [];
 
     /**
      * Order by verification for template
      * @type {Boolean}
      */
-    $scope.reverse = false;
+    this.reverse = false;
 
     /**
      * field used for table ordenation
      * @type {String}
      */
-    $scope.predicate = 'name';
+    this.predicate = 'name';
 
     /**
      * Limit to initial value
      * @type {Number}
      */
-    $scope.currentPage = 0;
+    this.currentPage = 0;
 
     /**
      * Page quantity for data visualization
      * @type {Number}
      */
-    $scope.pageSize = 10;
+    this.pageSize = 10;
 
     /**
      * Reset the form values
      */
-    $scope.reset = function() {
-      $scope.contact = [
-        {
-          name: '',
-          address: '',
-          phone: ''
-        }
-      ];
+    this.reset = function() {
+      this.contact = {
+        name: '',
+        address: '',
+        phone: ''
+      };
     };
 
     /**
      * Returns the number page based in params
      * @return {[type]} [description]
      */
-    $scope.numberOfPages = function(){
-      return Math.ceil($scope.listContacts.length/$scope.pageSize);
+    this.numberOfPages = function(){
+      return Math.ceil(this.listContacts.length/this.pageSize);
     };
 
     /**
-     * Add a listContacts in $scope.listContacts
+     * Add a listContacts in this.listContacts
      */
-    $scope.create = function(contact){
-      $scope.listContacts = ContactsService.create(contact);
+    this.create = function(contact){
+      this.listContacts = ContactsService.create(contact);
       AlertService.add('success', 'Contact "' + contact.name + '" created with success!', 5000);
     };
 
@@ -69,8 +67,8 @@ angular.module('angularContactsListApp')
      * @param  {[type]} key [description]
      * @return {[type]}     [description]
      */
-    $scope.edit = function(key){
-      $scope.contact = $filter('filter')($scope.listContacts, {_id: key})[0];
+    this.edit = function(key){
+      this.contact = $filter('filter')(this.listContacts, {_id: key})[0];
       window.scrollTo(0, 0);
     };
 
@@ -79,8 +77,8 @@ angular.module('angularContactsListApp')
      * @param  {Object} item [description]
      * @return {[type]}      [description]
      */
-    $scope.update = function( item ) {
-      $scope.listContacts = ContactsService.update(item);
+    this.update = function( item ) {
+      this.listContacts = ContactsService.update(item);
       AlertService.add('success', 'Contact "' + item.name + '" updated with success!', 5000);
     };
 
@@ -89,13 +87,13 @@ angular.module('angularContactsListApp')
      * @param  {Object} item [description]
      * @return {[type]}      [description]
      */
-    $scope.save = function(item){
+    this.save = function(item){
       if(typeof item._id !== 'undefined'){
-        $scope.update(item);
+        this.update(item);
       } else {
-        $scope.create(item);
+        this.create(item);
       }
-      $scope.reset();
+      this.reset();
     };
 
     /**
@@ -104,7 +102,7 @@ angular.module('angularContactsListApp')
      * @param  {Boolean} confirmation [description]
      * @return {Boolean}              [description]
      */
-    $scope.delete = function( index, confirmation ){
+    this.delete = function( index, confirmation ){
       confirmation = (typeof confirmation !== 'undefined') ? confirmation : true;
       if (confirmDelete(confirmation)) {
         var message,
@@ -112,7 +110,7 @@ angular.module('angularContactsListApp')
         if (!!item) {
           message = 'Contact "' + item.name + '" with id "' + item._id+ '" was removed of your contact\'s list';
           AlertService.add('success', message, 5000);
-          $scope.listContacts = ContactsService.getListItems();
+          this.listContacts = ContactsService.getListItems();
           return true;
         }
         AlertService.add('error', 'Houston, we have a problem. This operation cannot be executed correctly.', 5000);
@@ -133,11 +131,18 @@ angular.module('angularContactsListApp')
      * Method for class initialization
      * @return {[type]} [description]
      */
-    $scope.init = function(){
-      $scope.listContacts = $scope.filteredData = ContactsService.getListItems();
-      $scope.reset();
+    this.init = function(){
+      this.listContacts = this.filteredData = ContactsService.getListItems();
+      this.reset();
     };
 
-    $scope.init();
+    this.init();
 
-  });
+  }
+
+  angular.module('angularContactsListApp')
+    .controller('MainCtrl', MainCtrl);
+
+  MainCtrl.$inject = ['$scope', '$filter', 'AlertService', 'ContactsService'];
+
+}());

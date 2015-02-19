@@ -1,7 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('angularContactsListApp')
-  .factory('OfflineModel', function OfflineModel($filter, CryptoOfflineStorageService) {
+  function OfflineModel($filter, CryptoOfflineStorageService) {
 
     // Service logic
     // ...
@@ -98,4 +98,11 @@ angular.module('angularContactsListApp')
       }
     };
 
-  });
+  }
+
+  angular.module('angularContactsListApp')
+    .factory('OfflineModel', OfflineModel);
+
+  OfflineModel.$inject = ['$filter', 'CryptoOfflineStorageService'];
+
+}());

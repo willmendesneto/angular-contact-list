@@ -1,0 +1,17 @@
+<table class="table table-bordered table-responsive table-striped table-hover" >
+  <thead>
+    <tr>
+      <th class="contact-table-order col-lg-3" data-ng-class="{asc: mainCtrl.reverse === true && mainCtrl.predicate === 'name', desc: mainCtrl.reverse === false && mainCtrl.predicate === 'name'}" data-ng-click="mainCtrl.predicate = 'name'; mainCtrl.reverse=!mainCtrl.reverse; ">Name</th>
+      <th class="col-lg-2 col-sm-3 col-xs-3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="item in mainCtrl.filteredData = (mainCtrl.listContacts | orderBy:mainCtrl.predicate:mainCtrl.reverse | filter:mainCtrl.search) | startFrom:mainCtrl.currentPage*mainCtrl.pageSize | limitTo:mainCtrl.pageSize track by $index">
+      <td>{{item.name}}</td>
+      <td>
+        <button class="btn btn-primary btn-outline" data-ng-click="mainCtrl.edit(item._id);" ><span class="hidden-xs">EDIT</span><span class="visible-xs">✔</span></button>
+        <button class="btn btn-danger btn-outline" data-ng-click="mainCtrl.delete(item._id);" ><span class="hidden-xs">DELETE</span><span class="visible-xs">✖</span></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

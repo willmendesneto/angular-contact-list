@@ -4,6 +4,6 @@ angular.module('angularContactsListApp')
   .directive('qsTable', function () {
     return {
       restrict: 'E',
-      templateUrl: 'views/directives/qs-table.html'
+      templateUrl: 'scripts/main/views/directives/qs-table.html'
     };
   });

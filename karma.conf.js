@@ -46,14 +46,14 @@ module.exports = function(config) {
     browsers: ['Chrome'],
 
     // Code coverage report
-    reporters: ['progress', 'coverage'],
-    preprocessors: {
-      'app/scripts/**/*.js': ['coverage']
-    },
-    coverageReporter: {
-      type:'html',
-      dir:'coverage'
-    },
+    // reporters: ['progress', 'coverage'],
+    // preprocessors: {
+    //   'app/scripts/**/*.js': ['coverage']
+    // },
+    // coverageReporter: {
+    //   type:'html',
+    //   dir:'coverage'
+    // },
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit

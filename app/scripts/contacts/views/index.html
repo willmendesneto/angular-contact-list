@@ -6,18 +6,18 @@
     <form autocomplete="off" role="form">
       <div class="form-group">
         <fieldset>
-          <input type="search" name="search" id="search" placeholder="Search..." data-ng-model="search" class="form-control" />
+          <input type="search" name="search" id="search" placeholder="Search..." data-ng-model="contactsCtrl.search" class="form-control" />
         </fieldset>
       </div>
     </form>
 
     <div class="alert alert-warning fade in" data-ng-repeat="alert in alerts track by $index">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-ng-click="closeAlertMessage($index)">×</button>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-ng-click="contactsCtrl.closeAlertMessage($index)">×</button>
       {{ alert.msg }}
     </div>
 
-    <ul class="contact-list" data-ng-if="filteredData.length > 0">
-      <li data-ng-repeat="item in filteredData = (listContacts | filter:search) track by $index">
+    <ul class="contact-list" data-ng-if="contactsCtrl.filteredData.length > 0">
+      <li data-ng-repeat="item in contactsCtrl.filteredData = (contactsCtrl.listContacts | filter:contactsCtrl.search) track by $index">
         <div class="first-letter" >
           <span>{{item.name[0] | capitalize}}</span>
         </div>
@@ -26,7 +26,7 @@
           <h2 class="title">{{item.name}}</h2>
           <ul>
             <li><a href="#/contacts/{{item._id}}/edit">✔ EDIT</a></li>
-            <li><a data-ng-click="delete(item._id);">✖ DELETE</a></li>
+            <li><a data-ng-click="contactsCtrl.delete(item._id);">✖ DELETE</a></li>
           </ul>
         </div>
       </li>

@@ -1,7 +1,7 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('angularContactsListApp')
-  .service('ContactsService', function ContactsService(OfflineModel, listContacts) {
+  function ContactsService(OfflineModel, listContacts) {
 
     // AngularJS will instantiate a singleton by calling "new" on this function
     var Contacts = OfflineModel.init('listContacts', listContacts);
@@ -16,4 +16,11 @@ angular.module('angularContactsListApp')
     Contacts.setFields(contactFields);
 
     return Contacts;
-  });
+  }
+
+  angular.module('angularContactsListApp')
+    .service('ContactsService', ContactsService);
+
+  ContactsService.$inject = ['OfflineModel', 'listContacts'];
+
+}());
