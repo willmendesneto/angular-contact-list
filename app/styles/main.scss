@@ -3,6 +3,7 @@
 @import 'my-mixins';
 @import 'compass/css3/box-shadow';
 @import 'compass/css3/transition';
+@import 'charts';
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;

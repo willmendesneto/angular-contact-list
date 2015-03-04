@@ -1,0 +1,111 @@
+<p>This module example is based in <a href="https://css-tricks.com/using-angularjs-for-data-visualisations/" target="_blank"><i>Using AngularJS for Data Visualisations</i></a></p>
+
+<!--bar chart-->
+<h2>Bar Chart</h2>
+
+<div class="chart" style="width:{{width}}px; height:{{height}}px;">
+  <h3>{{xAxis}}</h3>
+  <!-- Labels -->
+
+  <div class="y" style="height:{{height}}px; margin-left: -30px">
+    <!-- <span ng-repeat="header in yAxisHeaders track by $index" style="position: absolute; margin-right: 10px; font-size: 10px; bottom:{{(header[yHeader] / max * height) }}px;">
+      10
+    </span> -->
+    <span ng-repeat="number in numbers" style="position: absolute; margin-right: 10px; font-size: 10px; bottom:{{number}}px;">
+      {{number}}
+    </span>
+
+  </div>
+  <div class="x">
+   <div ng-repeat="bar in data track by $index">
+     <span style="margin-top:10px; text-align: center; word-wrap: break-word; font-size: 10px; float: left; width:{{width / data.length}}px; left:{{$index / data.length * width}}px;">
+       {{bar.label}}
+     </span>
+   </div>
+  </div>
+  <!-- Data -->
+   <div ng-repeat="bar in data track by $index" class="bar" style="height:{{bar.value / max * height}}px; width:{{width / data.length - 5}}px; left:{{$index / data.length * width}}px;" ng-mouseover="show = $index" ng-mouseleave="show = null">
+     <div ng-if="show !== null && show === $index">
+       <div class="label">{{bar.label}}<br/>{{bar.value}}</div>
+     </div>
+   </div>
+</div>
+
+
+<!--dot chart-->
+<h2>Dot Chart</h2>
+<div class="chart" style="width:{{width}}px; height:{{height}}px;">
+  <h3>{{xAxis}}</h3>
+  <!-- Labels -->
+
+  <div class="y" style="height:{{height}}px; margin-left: -30px">
+    <!-- <span ng-repeat="header in yAxisHeaders track by $index" style="position: absolute; margin-right: 10px; font-size: 10px; bottom:{{(header[yHeader] / max * height) }}px;">
+      10
+    </span> -->
+    <span ng-repeat="number in numbers" style="position: absolute; margin-right: 10px; font-size: 10px; bottom:{{number}}px;">
+      {{number}}
+    </span>
+
+  </div>
+  <div class="x">
+   <div ng-repeat="bar in data track by $index">
+     <span style="margin-top:10px; text-align: center; word-wrap: break-word; font-size: 10px; float: left; width:{{width / data.length}}px; left:{{$index / data.length * width}}px;">
+       {{bar.label}}
+     </span>
+   </div>
+  </div>
+  <!-- Data -->
+  <div ng-repeat="dot in data track by $index" class="dot" style="bottom:{{dot.value / max * height}}px; left:{{($index + 0.5) / data.length * width}}px;" ng-mouseover="show = $index" ng-mouseleave="show = null">
+     <div ng-if="show !== null && show === $index">
+       <div class="label">{{dot.label}}<br/>{{dot.value}}</div>
+     </div>
+  </div>
+
+  <div ng-repeat="dot in data2 track by $index" class="dot-second" style="bottom:{{dot.value / max * height}}px; left:{{($index + 0.5) / data.length * width}}px;" ng-mouseover="show = $index" ng-mouseleave="show = null">
+    <div ng-if="show !== null && show === $index">
+      <div class="label">{{dot.label}}<br/>{{line.value}}</div>
+    </div>
+  </div>
+
+</div>
+
+
+<!--svg line chart-->
+<h2>SVG Line Chart</h2>
+
+<h3>{{xAxis}}</h3>
+<div class="chart" style="width:{{width}}px; height:{{height}}px;">
+  <!-- Labels -->
+
+  <div class="y" style="height:{{height}}px; margin-left: -30px">
+    <!-- <span ng-repeat="header in yAxisHeaders track by $index" style="position: absolute; margin-right: 10px; font-size: 10px; bottom:{{(header[yHeader] / max * height) }}px;">
+      10
+    </span> -->
+    <span ng-repeat="number in numbers" style="position: absolute; margin-right: 10px; font-size: 10px; bottom:{{number}}px;">
+      {{number}}
+    </span>
+
+  </div>
+  <div class="x">
+   <div ng-repeat="bar in data track by $index">
+     <span style="margin-top:10px; text-align: center; word-wrap: break-word; font-size: 10px; float: left; width:{{width / data.length}}px; left:{{$index / data.length * width}}px;">
+       {{bar.label}}
+     </span>
+   </div>
+  </div>
+  <!-- Data -->
+  <svg style="width:{{width}}px; height:{{height}}px;">
+
+    <line ng-repeat="line in data track by $index" x1="{{$index / data.length * width }}" y1="{{data[$index - 1].value / max * height}}" x2="{{($index + 1) / data.length * width}}" y2="{{line.value / max * height}}" ng-mouseover="show = $index" ng-mouseleave="show = null">
+      <div ng-if="show !== null && show === $index">
+        <div class="label">{{line.label}}<br/>{{line.value}}</div>
+      </div>
+    </line>
+
+    <line ng-repeat="line in data2 track by $index" x1="{{$index / data.length * width }}" y1="{{data[$index - 1].value / max * height}}" x2="{{($index + 1) / data.length * width}}" y2="{{line.value / max * height}}" ng-mouseover="show = $index" ng-mouseleave="show = null">
+      <div ng-if="show !== null && show === $index">
+        <div class="label">{{line.label}}<br/>{{line.value}}</div>
+      </div>
+    </line>
+  </svg>
+</div>
